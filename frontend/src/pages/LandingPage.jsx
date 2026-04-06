@@ -1,125 +1,180 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+
+const NeuralTerminal = () => {
+  const [logs, setLogs] = useState([
+    { id: 1, text: "INITIATING_NEURAL_HANDSHAKE...", type: "system" },
+    { id: 2, text: "CONNECTING_N8N_WORKFLOW_v3.2", type: "success" },
+  ]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const messages = [
+        "PARSING_PDF_BITSTREAM",
+        "EXTRACTING_SEMANTIC_NODES",
+        "OPTIMIZING_KEYWORD_DENSITY",
+        "GENERATING_AI_DELTA_REPORT",
+        "SYNCING_RESUME_INTEL_VAULT",
+        "HANDSHAKE_READY // AWAITING_INPUT"
+      ];
+      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+      setLogs(prev => [...prev.slice(-4), { id: Date.now(), text: randomMsg, type: "process" }]);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="w-full h-full bg-surface-container relative overflow-hidden group">
+      {/* Decorative Grid Overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#060e20_70%)] opacity-40 z-10 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(167,165,255,0.05)_1px,_transparent_1px),_linear-gradient(90deg,rgba(167,165,255,0.05)_1px,_transparent_1px)] bg-[size:40px_40px] z-0"></div>
+
+      <div className="relative z-20 p-8 h-full flex flex-col">
+        {/* Terminal Header */}
+        <div className="flex items-center justify-between mb-8 pb-4 border-b border-outline-variant/20">
+          <div className="flex items-center gap-3">
+            <span className="material-symbols-outlined text-secondary animate-pulse">terminal</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-on-surface-variant">extraction.intelligence.node</span>
+          </div>
+          <div className="flex gap-1.5">
+            {[1,2,3].map(i => <div key={i} className="w-1.5 h-1.5 bg-outline-variant/30"></div>)}
+          </div>
+        </div>
+
+        {/* Live Stream */}
+        <div className="flex-1 font-mono text-[11px] space-y-3">
+          <AnimatePresence mode="popLayout">
+            {logs.map((log) => (
+              <motion.div
+                key={log.id}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="flex gap-3"
+              >
+                <span className="text-secondary/40">[{new Date().toLocaleTimeString([], {hour12: false, hour: '2-digit', minute:'2-digit', second:'2-digit'})}]</span>
+                <span className={
+                  log.type === 'success' ? 'text-secondary' : 
+                  log.type === 'system' ? 'text-primary' : 'text-on-surface-variant'
+                }>{log.text}</span>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Neural Visualizer */}
+        <div className="mt-8 h-24 relative overflow-hidden bg-surface-container-low">
+          <div className="absolute inset-0 flex items-end justify-around px-4">
+            {[...Array(24)].map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{ height: [20, Math.random() * 80 + 10, 20] }}
+                transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.05 }}
+                className="w-1 bg-primary/20"
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const LandingPage = () => {
   return (
-    <div className="px-6 max-w-7xl mx-auto space-y-24 pb-20">
-      {/* Hero Section */}
-      <section className="relative pt-12 md:pt-20">
-        <div className="flex flex-col md:flex-row gap-12 items-start justify-between">
+    <div className="px-6 max-w-7xl mx-auto space-y-24 pb-20 overflow-x-hidden">
+      {/* Hero Section: The Precision Architect Layout */}
+      <section className="relative pt-12 md:pt-32">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.85fr] gap-16 lg:gap-24 items-start">
+          
+          {/* Hero Content (35%) */}
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex-1 space-y-8"
+            className="space-y-12"
           >
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="h-[2px] w-8 bg-primary"></span>
-                <span className="font-mono text-[10px] uppercase tracking-widest text-primary animate-pulse">SYSTEM_ACTIVE // V2.04</span>
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-4 bg-primary/10 px-4 py-2">
+                <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary">System: Intel.Active</span>
               </div>
-              <h1 className="font-headline text-6xl md:text-8xl font-bold tracking-tighter uppercase leading-[0.85]">
-                Tailor <br/>
-                <span className="text-secondary select-none">Resumes</span> <br/>
-                With AI
+              <h1 className="font-headline text-7xl md:text-9xl font-bold tracking-[-0.04em] uppercase leading-[0.82]">
+                Architect <br/>
+                <span className="text-secondary select-none">Your</span> <br/>
+                Future
               </h1>
             </div>
             
-            <p className="max-w-md font-body text-on-surface-variant leading-relaxed text-lg">
-              Automate the optimization of your professional profile. Our neural network processes resumes against job descriptions to maximize ATS compatibility.
+            <p className="max-w-md font-body text-on-surface-variant leading-relaxed text-xl border-l border-primary/30 pl-8">
+              We reject generic resumes. Our neural engine deconstructs job descriptions to rebuild your profile with <span className="text-secondary font-bold italic underline underline-offset-4">clinical precision</span>.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link to="/upload" className="bg-secondary text-on-secondary px-8 py-5 font-headline font-bold uppercase tracking-widest text-sm flex items-center justify-between group shadow-[0_10px_40px_-10px_rgba(191,243,101,0.3)] hover:scale-105 active:scale-95 transition-all">
-                <span>Access Terminal</span>
-                <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            <div className="flex flex-col sm:flex-row gap-0 pt-4">
+              <Link to="/upload" className="bg-[linear-gradient(135deg,#a7a5ff_0%,#645efb_100%)] text-on-primary px-10 py-6 font-headline font-bold uppercase tracking-widest text-sm flex items-center justify-between group shadow-[0_15px_60px_-15px_rgba(167,165,255,0.4)] hover:scale-[1.02] active:scale-95 transition-all">
+                <span>Initiate Handshake</span>
+                <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform">bolt</span>
               </Link>
-              <button className="border-2 border-outline-variant px-8 py-5 font-headline font-bold uppercase tracking-widest text-sm text-on-surface hover:bg-surface-container transition-all">
-                View Architecture
+              <button className="border-t lg:border-t-0 lg:border-l border-outline-variant/30 px-10 py-6 font-headline font-bold uppercase tracking-widest text-sm text-on-surface hover:bg-surface-container transition-all">
+                Architecture_v2
               </button>
             </div>
           </motion.div>
 
+          {/* Hero Visual: Neural Extraction Terminal (65%) */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="flex-1 w-full max-w-xl aspect-square relative"
+            className="relative aspect-[16/9] lg:aspect-auto lg:h-[700px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)]"
           >
-            {/* Visual Asset 01: The Gear/Circuit */}
-            <div className="absolute inset-0 border border-primary/20 rounded-full animate-spin-[20s] linear flex items-center justify-center">
-              <div className="w-4/5 h-4/5 border border-secondary/10 rounded-full animate-spin-[15s] linear reverse"></div>
-            </div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center space-y-2">
-                 <span className="material-symbols-outlined text-secondary text-7xl animate-pulse">psychology</span>
-                 <p className="font-mono text-[10px] text-on-surface-variant uppercase tracking-[0.3em]">Core_Processing</p>
-              </div>
+            <div className="absolute -inset-4 bg-primary/20 blur-[100px] rounded-full z-0 opacity-30"></div>
+            <NeuralTerminal />
+            
+            {/* Floating Metric Overlays */}
+            <div className="absolute top-12 -left-12 p-6 bg-surface-container-highest border-l-4 border-secondary z-30 hidden md:block">
+              <p className="font-mono text-[9px] text-secondary mb-1 uppercase tracking-widest">Efficiency_Score</p>
+              <p className="font-headline font-bold text-3xl tabular-nums tracking-tighter">99.8%</p>
             </div>
             
-            {/* Floating Data Nodes */}
-            <div className="absolute top-10 right-10 p-4 bg-surface-container border border-primary/20 backdrop-blur-md">
-              <p className="font-mono text-[9px] text-primary mb-1 uppercase">Scan_Rate</p>
-              <p className="font-headline font-bold text-xl uppercase">1.2ms</p>
-            </div>
-            <div className="absolute bottom-1/4 -left-4 p-4 bg-surface-container-high border border-secondary/20 shadow-2xl">
-              <p className="font-mono text-[9px] text-secondary mb-1 uppercase">ATS_Match</p>
-              <p className="font-headline font-bold text-xl uppercase">98.4%</p>
+            <div className="absolute bottom-24 -right-8 p-6 bg-surface-container-highest border-r-4 border-primary z-30 hidden md:block">
+              <p className="font-mono text-[9px] text-primary mb-1 uppercase tracking-widest">Processing_Load</p>
+              <p className="font-headline font-bold text-3xl tabular-nums tracking-tighter">1.2ms</p>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Logic Blocks Section */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-0.5 bg-outline-variant/10">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-0 bg-outline-variant/20 border border-outline-variant/20">
         {[
           { title: 'Neural Extraction', description: 'Parse complex PDF structures into structured JSON logic with 99.8% accuracy.', icon: 'data_exploration' },
           { title: 'Keyword Injection', description: 'Algorithmically match job requirements with your experience through semantic layering.', icon: 'center_focus_strong' },
           { title: 'Vault Storage', description: 'Encrypted storage for all historically tailored iterations on our secure cloud nodes.', icon: 'encrypted' }
         ].map((item, i) => (
-          <div key={i} className="bg-surface-container p-10 space-y-6 hover:bg-surface-container-high transition-colors group">
-            <span className="material-symbols-outlined text-primary text-4xl group-hover:scale-110 transition-transform">{item.icon}</span>
-            <div className="space-y-2">
-              <h3 className="font-headline font-bold text-xl uppercase tracking-tight">{item.title}</h3>
-              <p className="font-body text-sm text-on-surface-variant leading-relaxed">{item.description}</p>
+          <div key={i} className="bg-surface-container p-12 space-y-8 hover:bg-surface-container-high transition-colors group relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-1 h-0 bg-secondary group-hover:h-full transition-all duration-500"></div>
+            <span className="material-symbols-outlined text-primary text-5xl group-hover:scale-110 group-hover:text-secondary transition-all">{item.icon}</span>
+            <div className="space-y-4">
+              <h3 className="font-headline font-bold text-2xl uppercase tracking-tighter">{item.title}</h3>
+              <p className="font-body text-base text-on-surface-variant leading-relaxed">{item.description}</p>
             </div>
           </div>
         ))}
       </section>
 
-      {/* Terminal Preview Section */}
-      <section className="bg-surface-container-low border border-primary/10 overflow-hidden">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-primary/10 bg-surface-container">
-          <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-error/20"></div>
-            <div className="w-3 h-3 rounded-full bg-secondary/20"></div>
-            <div className="w-3 h-3 rounded-full bg-primary/20"></div>
-          </div>
-          <span className="font-mono text-[10px] text-on-surface-variant uppercase">SYSTEM_MANIFEST // OUTPUT_STREAM</span>
-        </div>
-        <div className="p-8 font-mono text-xs space-y-2 max-h-[300px] overflow-hide custom-scrollbar">
-          <p className="text-secondary opacity-80">[OK] INITIATING_VIRTUAL_MACHINE...</p>
-          <p className="text-on-surface/40">[...] BOOTING_CORE_MODULES_0-4</p>
-          <p className="text-on-surface/40">[...] CONNECTING_AWS_S3_VAULT</p>
-          <p className="text-secondary">[OK] N8N_WORKFLOW_ESTABLISHED</p>
-          <p className="text-primary mt-4 animate-pulse">_ AWAITING_USER_INPUT</p>
-          <div className="pt-8 flex justify-center">
-             <Link to="/upload" className="font-headline font-bold uppercase text-on-surface hover:text-secondary transition-colors underline underline-offset-4 decoration-primary/30">
-               Click to Initiate Handshake
-             </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Final Call to Action */}
-      <section className="py-24 text-center space-y-12 border-t border-outline-variant/10">
-        <h2 className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tight max-w-4xl mx-auto leading-none">
-          Ready to <span className="text-secondary">Evolve</span> Your Profession?
+      <section className="py-32 text-center space-y-16 relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/10 blur-[120px] rounded-full -z-10"></div>
+        <h2 className="font-headline text-6xl md:text-8xl font-bold uppercase tracking-tight max-w-5xl mx-auto leading-[0.9]">
+          The Profession <br/><span className="text-secondary italic">Requires</span> Evolution.
         </h2>
-        <div className="flex justify-center gap-6">
-           <Link to="/upload" className="bg-primary text-on-primary px-12 py-6 font-headline font-bold uppercase tracking-wider text-sm shadow-[0_10px_40px_-5px_rgba(167,165,255,0.4)] hover:-translate-y-1 transition-all active:scale-95">
-             Get Started Now
+        <div className="flex justify-center flex-col sm:flex-row gap-0 max-w-xl mx-auto">
+           <Link to="/upload" className="bg-primary text-on-primary px-16 py-8 font-headline font-bold uppercase tracking-widest text-sm shadow-[0_20px_50px_-10px_rgba(167,165,255,0.5)] hover:-translate-y-2 transition-all active:scale-95">
+             Evolve Now
+           </Link>
+           <Link to="/upload" className="border border-primary/20 text-on-surface px-16 py-8 font-headline font-bold uppercase tracking-widest text-sm hover:bg-surface-container transition-all">
+             Documentation
            </Link>
         </div>
       </section>
