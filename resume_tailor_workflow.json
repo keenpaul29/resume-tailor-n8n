@@ -1,0 +1,211 @@
+{
+  "name": "RESUME.INTEL Tailoring Engine",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "tailor-resume",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "1",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [ 250, 300 ]
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "file"
+      },
+      "id": "2",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [ 450, 200 ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "messages": {
+          "messageValues": [
+            {
+              "role": "system",
+              "content": "You are a resume parser. OUTPUT must be valid JSON."
+            },
+            {
+              "role": "user",
+              "content": "Convert this resume text into structured JSON. Extract fields: Name, Contact (email, phone), Summary, Skills (bullets), Experience (company, role, dates, bullets), Education, Projects, Certifications.\n\nResume text:\n{{ $json['text'] }}"
+            }
+          ]
+        }
+      },
+      "id": "3",
+      "name": "Parse Resume (LLM)",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [ 650, 200 ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "messages": {
+          "messageValues": [
+            {
+              "role": "system",
+              "content": "You are a job analysis assistant. OUTPUT JSON."
+            },
+            {
+              "role": "user",
+              "content": "Here is a job description. Identify: required hard skills, preferred skills, key ATS keywords, responsibilities. Format as JSON lists.\n\nJD:\n{{ $node['Webhook Trigger'].json['body']['jobDescription'] }}"
+            }
+          ]
+        }
+      },
+      "id": "4",
+      "name": "Parse JD (LLM)",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [ 450, 400 ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "messages": {
+          "messageValues": [
+            {
+              "role": "system",
+              "content": "You are an expert technical resume writer optimizing for ATS.\nTASK: Tailor the resume to the job. Rules:\n- Keep to 1 page.\n- Use strong action verbs and quantify impact (metrics).\n- Prioritize experience matching JD.\n- Inject relevant keywords naturally.\n- Drop or condense unrelated info."
+            },
+            {
+              "role": "user",
+              "content": "Structured Resume JSON: {{ $json['message']['content'] }}\nJob Requirements JSON: {{ $node['Parse JD (LLM)'].json['message']['content'] }}\nOUTPUT: A Markdown resume text (with sections like Summary, Skills, Experience, Education)."
+            }
+          ]
+        }
+      },
+      "id": "5",
+      "name": "Tailor Resume (LLM)",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [ 850, 300 ]
+    },
+    {
+      "parameters": {
+        "markdown": "={{ $json['message']['content'] }}"
+      },
+      "id": "6",
+      "name": "Markdown to HTML",
+      "type": "n8n-nodes-base.markdown",
+      "typeVersion": 1,
+      "position": [ 1050, 300 ]
+    },
+    {
+      "parameters": {
+        "html": "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><style>body { font-family: Arial, sans-serif; margin: 0; padding: 1in; color: #222; } h1 { font-size: 24px; margin-bottom: 0; } h2 { font-size: 18px; margin-top: 1em; border-bottom: 1px solid #888; padding-bottom: 2px; } p, li { font-size: 12px; line-height: 1.2; margin: 4px 0; } ul { margin: 4px 0 12px 20px; } .contact { font-size: 10px; margin-top: 2px; }</style></head><body>{{ $json['data'] }}</body></html>",
+        "fileName": "tailored_resume.pdf"
+      },
+      "id": "7",
+      "name": "HTML to PDF",
+      "type": "n8n-nodes-base.pdfmunk",
+      "typeVersion": 1,
+      "position": [ 1250, 300 ]
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "resume-outputs",
+        "fileName": "tailored_resume.pdf",
+        "binaryPropertyName": "data",
+        "returnPresignedUrl": true,
+        "expires": 3600
+      },
+      "id": "8",
+      "name": "Upload to S3",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [ 1450, 300 ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "resultUrl",
+              "value": "={{ $json['url'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9",
+      "name": "Format Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [ 1650, 300 ]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          { "node": "Extract from File", "type": "main", "index": 0 },
+          { "node": "Parse JD (LLM)", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          { "node": "Parse Resume (LLM)", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Parse Resume (LLM)": {
+      "main": [
+        [
+          { "node": "Tailor Resume (LLM)", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Parse JD (LLM)": {
+      "main": [
+        [
+          { "node": "Tailor Resume (LLM)", "type": "main", "index": 1 }
+        ]
+      ]
+    },
+    "Tailor Resume (LLM)": {
+      "main": [
+        [
+          { "node": "Markdown to HTML", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Markdown to HTML": {
+      "main": [
+        [
+          { "node": "HTML to PDF", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "HTML to PDF": {
+      "main": [
+        [
+          { "node": "Upload to S3", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Upload to S3": {
+      "main": [
+        [
+          { "node": "Format Response", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

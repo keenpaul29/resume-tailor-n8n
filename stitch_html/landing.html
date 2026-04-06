@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#1c00a0",
+                        "error": "#ff6e84",
+                        "surface-container-lowest": "#000000",
+                        "secondary-fixed": "#bff365",
+                        "background": "#060e20",
+                        "outline-variant": "#40485d",
+                        "secondary-container": "#476800",
+                        "secondary-fixed-dim": "#b2e558",
+                        "on-secondary": "#3d5a00",
+                        "surface-container": "#0f1930",
+                        "surface-container-low": "#091328",
+                        "surface": "#060e20",
+                        "inverse-surface": "#faf8ff",
+                        "tertiary-fixed-dim": "#f3f0ef",
+                        "on-error": "#490013",
+                        "surface-tint": "#a7a5ff",
+                        "tertiary": "#fcf9f8",
+                        "inverse-on-surface": "#4d556b",
+                        "on-secondary-fixed": "#2f4600",
+                        "on-tertiary-fixed": "#515050",
+                        "on-primary-fixed-variant": "#1a0099",
+                        "surface-container-high": "#141f38",
+                        "on-secondary-container": "#ecffc7",
+                        "secondary-dim": "#b2e558",
+                        "on-tertiary": "#605f5e",
+                        "tertiary-fixed": "#ffffff",
+                        "surface-container-highest": "#192540",
+                        "on-error-container": "#ffb2b9",
+                        "primary-fixed-dim": "#8885ff",
+                        "primary-dim": "#645efb",
+                        "surface-variant": "#192540",
+                        "on-primary-container": "#14007e",
+                        "primary-fixed": "#9795ff",
+                        "on-tertiary-fixed-variant": "#6e6d6c",
+                        "tertiary-dim": "#edeaea",
+                        "outline": "#6d758c",
+                        "on-background": "#dee5ff",
+                        "secondary": "#bff365",
+                        "primary": "#a7a5ff",
+                        "surface-dim": "#060e20",
+                        "tertiary-container": "#edeaea",
+                        "on-surface": "#dee5ff",
+                        "surface-bright": "#1f2b49",
+                        "on-primary-fixed": "#000000",
+                        "error-container": "#a70138",
+                        "primary-container": "#9795ff",
+                        "on-tertiary-container": "#575656",
+                        "on-surface-variant": "#a3aac4",
+                        "on-secondary-fixed-variant": "#456500",
+                        "inverse-primary": "#4e45e4",
+                        "error-dim": "#d73357"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #060e20; color: #dee5ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-secondary selection:text-background overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#060e20]/60 backdrop-blur-xl border-b border-[#a7a5ff]/15">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-[1440px] mx-auto font-['Space_Grotesk'] tracking-tight">
+<div class="text-xl font-bold tracking-tighter text-[#dee5ff]">RESUME.INTEL</div>
+<div class="hidden md:flex gap-10">
+<a class="text-[#a7a5ff] border-b-2 border-[#a7a5ff] pb-1 transition-all duration-200" href="#">Analysis</a>
+<a class="text-[#dee5ff]/70 hover:text-[#a7a5ff] transition-all duration-200" href="#">Tailoring</a>
+<a class="text-[#dee5ff]/70 hover:text-[#a7a5ff] transition-all duration-200" href="#">Keywords</a>
+<a class="text-[#dee5ff]/70 hover:text-[#a7a5ff] transition-all duration-200" href="#">Intelligence</a>
+</div>
+<button class="bg-[#a7a5ff] text-[#1c00a0] px-6 py-2 font-bold hover:bg-[#8885ff] active:scale-95 duration-100 uppercase text-sm tracking-widest">
+                Terminal Access
+            </button>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex flex-col justify-center px-8 lg:px-24 overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute top-0 right-0 w-[800px] h-[800px] bg-primary blur-[160px] translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary blur-[160px] -translate-x-1/2 translate-y-1/2"></div>
+</div>
+<div class="z-10 max-w-5xl">
+<div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 bg-surface-container-high border-l-4 border-secondary">
+<span class="material-symbols-outlined text-secondary text-sm">terminal</span>
+<span class="font-mono text-xs uppercase tracking-[0.2em] text-secondary">System Status: Active</span>
+</div>
+<h1 class="text-6xl md:text-8xl font-bold font-headline tracking-tighter leading-none mb-8">
+                    PRECISION <br/>ARCHITECTING FOR <br/><span class="text-primary italic">YOUR CAREER</span>
+</h1>
+<p class="text-xl md:text-2xl font-body text-on-surface-variant max-w-2xl mb-12 leading-relaxed">
+                    Decoding job descriptions and refactoring resumes with surgical accuracy. We don't just optimize; we rebuild your professional narrative for high-performance extraction.
+                </p>
+<div class="flex flex-col sm:flex-row gap-6">
+<button class="bg-primary text-on-primary px-10 py-5 text-lg font-bold font-headline hover:bg-primary-fixed-dim transition-all flex items-center gap-4 group">
+                        INITIALIZE ALIGNMENT
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward_ios</span>
+</button>
+<button class="border-2 border-secondary text-secondary px-10 py-5 text-lg font-bold font-headline hover:bg-secondary hover:text-on-secondary transition-all">
+                        VIEW PROTOCOLS
+                    </button>
+</div>
+</div>
+<!-- Terminal Decors -->
+<div class="absolute right-8 bottom-24 hidden xl:block w-[450px] font-mono text-[10px] text-primary/30 leading-tight">
+<p>[DEBUG] initializing core.engine_v4.2...</p>
+<p>[INFO] mounting pdf_parser_v2...</p>
+<p>[INFO] keyword_extractor_running...</p>
+<p>[WARN] mismatch detected in skill_matrix_layer_7</p>
+<p>[ACTION] refactoring experience_block_3</p>
+<p>[SUCCESS] alignment verified @ 98.4% accuracy</p>
+</div>
+</section>
+<!-- Stats Section (Tonal Shift) -->
+<section class="bg-surface-container-low py-24 px-8 border-y border-outline-variant/15">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="flex flex-col gap-2">
+<span class="font-mono text-secondary text-5xl font-bold">98.4%</span>
+<span class="font-headline text-lg uppercase tracking-widest text-on-surface-variant">Match Accuracy</span>
+<div class="w-full h-1 bg-surface-container mt-4">
+<div class="w-[98.4%] h-full bg-secondary"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-mono text-primary text-5xl font-bold">12s</span>
+<span class="font-headline text-lg uppercase tracking-widest text-on-surface-variant">Processing Latency</span>
+<div class="w-full h-1 bg-surface-container mt-4">
+<div class="w-[15%] h-full bg-primary"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-mono text-secondary text-5xl font-bold">8.2x</span>
+<span class="font-headline text-lg uppercase tracking-widest text-on-surface-variant">Interview Lift</span>
+<div class="w-full h-1 bg-surface-container mt-4">
+<div class="w-[82%] h-full bg-secondary"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features (Tailoring Engine Workflow) -->
+<section class="py-32 px-8 max-w-[1440px] mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+<div class="max-w-xl">
+<h2 class="text-4xl md:text-5xl font-bold font-headline tracking-tighter mb-6">TAILORING ENGINE</h2>
+<p class="text-on-surface-variant leading-relaxed">Our node-based workflow decomposes your career data and re-assembles it based on clinical ATS requirements and recruiter intent models.</p>
+</div>
+<div class="font-mono text-xs text-primary bg-primary/5 px-4 py-2">
+                    SYSTEM_VERSION: 1.0.4 // CORE: STABLE
+                </div>
+</div>
+<!-- Workflow Visualizer -->
+<div class="grid grid-cols-1 lg:grid-cols-7 gap-4 items-center">
+<!-- Node 1 -->
+<div class="lg:col-span-2 bg-surface-container p-8 border-t-4 border-primary h-full">
+<div class="mb-12">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="description">description</span>
+</div>
+<h3 class="font-mono text-lg font-bold mb-4 uppercase tracking-tighter">PDF_PARSER_V2</h3>
+<p class="text-sm text-on-surface-variant mb-6">De-compiling document structures. Extracting semantic hierarchies from raw artifacts.</p>
+<div class="bg-surface-container-highest p-3 font-mono text-[10px] text-secondary/60">
+                        INPUT: RESUME_FINAL_V2.PDF<br/>STATUS: PARSING...
+                    </div>
+</div>
+<!-- Connector -->
+<div class="hidden lg:flex justify-center">
+<span class="material-symbols-outlined text-outline-variant">trending_flat</span>
+</div>
+<!-- Node 2 -->
+<div class="lg:col-span-2 bg-surface-container-high p-8 border-t-4 border-secondary h-full scale-105 z-10 shadow-2xl">
+<div class="mb-12">
+<span class="material-symbols-outlined text-4xl text-secondary" data-icon="api">api</span>
+</div>
+<h3 class="font-mono text-lg font-bold mb-4 uppercase tracking-tighter">KEYWORD_EXTRACTOR</h3>
+<p class="text-sm text-on-surface-variant mb-6">High-frequency linguistic analysis. Aligning expertise clusters with employer demand.</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-[9px] font-mono bg-secondary/10 text-secondary px-2 py-1">SCALA</span>
+<span class="text-[9px] font-mono bg-secondary/10 text-secondary px-2 py-1">K8S</span>
+<span class="text-[9px] font-mono bg-secondary/10 text-secondary px-2 py-1">CI/CD</span>
+</div>
+</div>
+<!-- Connector -->
+<div class="hidden lg:flex justify-center">
+<span class="material-symbols-outlined text-outline-variant">trending_flat</span>
+</div>
+<!-- Node 3 -->
+<div class="lg:col-span-2 bg-surface-container p-8 border-t-4 border-primary h-full">
+<div class="mb-12">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="verified_user">verified_user</span>
+</div>
+<h3 class="font-mono text-lg font-bold mb-4 uppercase tracking-tighter">ATS_OPTIMIZER</h3>
+<p class="text-sm text-on-surface-variant mb-6">Final refactoring. Injecting surgical edits to bypass automated filter thresholds.</p>
+<div class="space-y-1">
+<div class="h-1 bg-primary/20 w-full"></div>
+<div class="h-1 bg-primary/20 w-4/5"></div>
+<div class="h-1 bg-primary/40 w-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Bento Grid Section -->
+<section class="py-32 px-8 bg-surface-container-lowest">
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Main Visual -->
+<div class="md:col-span-8 bg-surface-container relative min-h-[400px] overflow-hidden group">
+<img alt="Cybersecurity grid visualization" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-700" data-alt="abstract digital grid lines in deep blue and purple with glowing nodes and futuristic data visualization patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN6CVECMX7xp5IGY9VGSilIUVD4lTf8rX4M073pVLYCN_5vQMj-UuVyOVe0raeOITgyswWMAOeqhGjM38w_a6EX7heLEczzVtxQpQCJLNPOl69hW-Km3a4Ia_5b-yJSsZkb_mJ6BY4vx7qn6IyIRlLRsw5_Eo5A-_v3CJk9yl4hjiQgVlR6b6eXga4xuTvOaIg6Fr-5Zwe0lmbxINHLFjv3kjqU8EqXyd5xUuqWKqOgoaIKxeagNKYKpxZ2g3_xEd05l2ALUy0-ZlF"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-12 left-12 max-w-lg">
+<h3 class="text-3xl font-bold font-headline mb-4 tracking-tighter uppercase">Intelligent Refactoring</h3>
+<p class="text-on-surface-variant">Our AI doesn't just swap words. It understands the context of your achievements and maps them to the semantic search patterns used by modern Fortune 500 hiring systems.</p>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="md:col-span-4 bg-primary p-10 flex flex-col justify-between">
+<span class="material-symbols-outlined text-on-primary text-5xl">memory</span>
+<div>
+<h4 class="text-on-primary font-headline font-bold text-2xl mb-2">Neural Engine</h4>
+<p class="text-on-primary/80 text-sm">LLM-powered context awareness for complex professional histories.</p>
+</div>
+</div>
+<!-- Small Card 2 -->
+<div class="md:col-span-4 bg-surface-container-high p-10 border-b-4 border-secondary">
+<span class="font-mono text-secondary text-sm block mb-8 tracking-[0.3em]">SECURE_STORAGE</span>
+<h4 class="font-headline font-bold text-2xl mb-4">Zero-Leak Privacy</h4>
+<p class="text-on-surface-variant text-sm">Your data is encrypted at rest and in transit. All temporary analysis artifacts are purged within 60 seconds of session termination.</p>
+</div>
+<!-- Long Card -->
+<div class="md:col-span-8 bg-surface-container p-10 flex items-center gap-12">
+<div class="flex-1">
+<h4 class="font-headline font-bold text-2xl mb-4 uppercase">Direct API Access</h4>
+<p class="text-on-surface-variant text-sm mb-6">Integrate RESUME.INTEL directly into your hiring platforms or personal job-hunt dashboards. Fully documented REST endpoints for power users.</p>
+<a class="text-primary font-mono text-xs uppercase tracking-widest border-b border-primary pb-1" href="#">Read the docs</a>
+</div>
+<div class="hidden sm:block w-32 h-32 bg-background border border-outline-variant p-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl">code</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-40 text-center px-8">
+<h2 class="text-5xl md:text-7xl font-bold font-headline tracking-tighter mb-12">READY TO DECODE?</h2>
+<div class="flex justify-center gap-4">
+<button class="bg-secondary text-background px-12 py-6 text-xl font-bold font-headline hover:bg-secondary-fixed transition-all uppercase tracking-tighter">
+                    Initialize System
+                </button>
+</div>
+<div class="mt-12 font-mono text-xs text-on-surface-variant">
+                CURRENT_LATENCY: 12MS // NODES_ONLINE: 4,092 // ENCRYPTION: AES-256
+            </div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#091328] w-full border-t border-[#a7a5ff]/10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-12 py-16 w-full">
+<div class="flex flex-col gap-6">
+<div class="text-[#dee5ff] font-bold text-2xl tracking-tighter">RESUME.INTEL</div>
+<p class="font-['JetBrains_Mono'] text-xs uppercase tracking-widest text-[#bff365]">
+                    ©2024 RESUME.INTEL // SYSTEM STATUS: OPTIMAL
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="flex flex-col gap-4">
+<a class="font-['JetBrains_Mono'] text-xs uppercase tracking-widest text-[#dee5ff]/50 hover:text-[#bff365] hover:underline decoration-[#bff365] transition-colors" href="#">Documentation</a>
+<a class="font-['JetBrains_Mono'] text-xs uppercase tracking-widest text-[#dee5ff]/50 hover:text-[#bff365] hover:underline decoration-[#bff365] transition-colors" href="#">API_Access</a>
+</div>
+<div class="flex flex-col gap-4">
+<a class="font-['JetBrains_Mono'] text-xs uppercase tracking-widest text-[#dee5ff]/50 hover:text-[#bff365] hover:underline decoration-[#bff365] transition-colors" href="#">Privacy_Policy</a>
+<a class="font-['JetBrains_Mono'] text-xs uppercase tracking-widest text-[#dee5ff]/50 hover:text-[#bff365] hover:underline decoration-[#bff365] transition-colors" href="#">Security_Log</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

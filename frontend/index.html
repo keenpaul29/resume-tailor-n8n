@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RESUME.INTEL | AI Neural Optimization Engine</title>
+    <meta name="description" content="RESUME.INTEL: The first premium resume tailoring engine. 99% ATS compatibility, automated extraction, and neural keyword injection." />
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind Configuration -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      tailwind.config = {
+          darkMode: "class",
+          theme: {
+              extend: {
+                  "colors": {
+                      "on-primary": "#1c00a0",
+                      "error": "#ff6e84",
+                      "surface-container-lowest": "#000000",
+                      "secondary-fixed": "#bff365",
+                      "background": "#060e20",
+                      "outline-variant": "#40485d",
+                      "secondary-container": "#476800",
+                      "secondary-fixed-dim": "#b2e558",
+                      "on-secondary": "#3d5a00",
+                      "surface-container": "#0f1930",
+                      "surface-container-low": "#091328",
+                      "surface": "#060e20",
+                      "inverse-surface": "#faf8ff",
+                      "tertiary-fixed-dim": "#f3f0ef",
+                      "on-error": "#490013",
+                      "surface-tint": "#a7a5ff",
+                      "tertiary": "#fcf9f8",
+                      "inverse-on-surface": "#4d556b",
+                      "on-secondary-fixed": "#2f4600",
+                      "on-tertiary-fixed": "#515050",
+                      "on-primary-fixed-variant": "#1a0099",
+                      "surface-container-high": "#141f38",
+                      "on-secondary-container": "#ecffc7",
+                      "secondary-dim": "#b2e558",
+                      "on-tertiary": "#605f5e",
+                      "tertiary-fixed": "#ffffff",
+                      "surface-container-highest": "#192540",
+                      "on-error-container": "#ffb2b9",
+                      "primary-fixed-dim": "#8885ff",
+                      "primary-dim": "#645efb",
+                      "surface-variant": "#192540",
+                      "on-primary-container": "#14007e",
+                      "primary-fixed": "#9795ff",
+                      "on-tertiary-fixed-variant": "#6e6d6c",
+                      "tertiary-dim": "#edeaea",
+                      "outline": "#6d758c",
+                      "on-background": "#dee5ff",
+                      "secondary": "#bff365",
+                      "primary": "#a7a5ff",
+                      "surface-dim": "#060e20",
+                      "tertiary-container": "#edeaea",
+                      "on-surface": "#dee5ff",
+                      "surface-bright": "#1f2b49",
+                      "on-primary-fixed": "#000000",
+                      "error-container": "#a70138",
+                      "primary-container": "#9795ff",
+                      "on-tertiary-container": "#575656",
+                      "on-surface-variant": "#a3aac4",
+                      "on-secondary-fixed-variant": "#456500",
+                      "inverse-primary": "#4e45e4",
+                      "error-dim": "#d73357"
+                  },
+                  "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+                  },
+                  "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["Inter"],
+                      "label": ["Space Grotesk"],
+                      "mono": ["JetBrains Mono"]
+                  },
+                  "animation": {
+                      "shimmer": "shimmer 2s linear infinite",
+                  },
+                  "keyframes": {
+                      "shimmer": {
+                          "from": { "left": "-100%" },
+                          "to": { "left": "100%" },
+                      }
+                  }
+              },
+          },
+      }
+    </script>
+  </head>
+  <body class="bg-background text-on-background selection-secondary overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
