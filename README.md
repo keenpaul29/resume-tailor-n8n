@@ -6,52 +6,38 @@ A high-fidelity, "Cyber-Minimalist" web platform designed for elite software eng
 
 ## 🚀 Quick Start (Local)
 
-1. **Install Dependencies**:
-   ```bash
-   cd frontend
-   npm install
-   ```
-
-2. **Run Locally**:
-   ```bash
-   npm run dev
-   ```
-
-3. **Configure n8n Webhook**:
-   Copy `frontend/.env.example` to `frontend/.env` and add your `VITE_N8N_WEBHOOK_URL`.
+1. **Install Dependencies**: `cd frontend && npm install`
+2. **Run Locally**: `npm run dev`
+3. **Configure n8n Webhook**: Copy `frontend/.env.example` to `frontend/.env` and add your `VITE_N8N_WEBHOOK_URL`.
 
 ---
 
-## 🏗️ VPS Deployment (Production)
+## 🏗️ VPS Deployment (Production) // DUCKDNS + SSL
 
-Follow these steps to deploy RESUME.INTEL to your Virtual Private Server (Ubuntu/Debian recommended).
+Follow these steps for a "Full Success" deployment on your VPS using your [DuckDNS](https://www.duckdns.org/) domain.
 
-### 1. Provision Infrastructure
-We have provided a specialized provisioning script that installs Docker, Nginx, and all Node.js dependencies.
+### 1. Register Domain
+1. Log into DuckDNS and create your subdomain (e.g., `resume-intel`).
+2. Point the `current ip` to your VPS public IP (`45.251.234.233`).
 
+### 2. Deploy Platform
 1. **SSH into your VPS**:
    ```bash
-   ssh root@your-vps-ip
+   ssh root@45.251.234.233
    ```
-
-2. **Execute Setup**:
+2. **Clone & Setup**:
    ```bash
    git clone <your-repo-url>
    cd <your-repo-folder>
    chmod +x deployment/setup-vps.sh
    sudo ./deployment/setup-vps.sh
    ```
+   *This script installs Docker, Nginx, builds the React frontend, and requests an SSL certificate for HTTPS.*
 
-### 2. Configure Domain & SSL
-To ensure secure data transfer (HTTPS), use Certbot to manage your SSL certificates:
-```bash
-sudo certbot --nginx -d your-domain.com
-```
-
-### 3. Connect n8n Dashboard
-1. Access n8n at `https://your-domain:5678`.
-2. **Import Workflow**: Upload `resume_tailor_workflow.json`.
-3. **Webhook URL**: Once your n8n workflow is active, grab the production webhook URL and update your `frontend/.env` file on the VPS.
+### 3. Connect n8n Intelligence
+1. Access n8n at `https://resume-intel.duckdns.org:5678`.
+2. **Import Workflow**: Upload `resume_tailor_workflow.json` from the root directory.
+3. **Webhook Handshake**: In your n8n workflow, activate the webhook, copy the **Production URL**, and update your `frontend/.env` on the VPS.
 
 ---
 
@@ -64,21 +50,6 @@ The UI is built with a custom **Tailwind CSS** configuration defined in `fronten
 - **Secondary**: `#bff365` (Action Neon)
 - **Surface**: `#060e20` (Void Blue)
 - **Typography**: Space Grotesk (Headlines), JetBrains Mono (Data), Inter (Body).
-
----
-
-## 🧩 Architecture
-
-```mermaid
-graph TD
-    User([User]) -->|Upload PDF + JD| React[React Frontend]
-    React -->|Webhook| N8N[n8n Workflow]
-    N8N -->|Extract| LLM[AI Model: Claude/GPT]
-    LLM -->|Tailor| PDF[PDF Generator]
-    PDF -->|Store| S3[Storage Vault]
-    S3 -->|Return URL| React
-    React -->|Show Compare| Editor[Result Editor]
-```
 
 ---
 **System Status: [OPERATIONAL] // V2.0.4**
