@@ -9,20 +9,20 @@ const ProcessingPage = () => {
     const [logs, setLogs] = useState([]);
     const [status, setStatus] = useState('initializing');
 
-    const logMessages = [
-        { type: 'info', text: '[OK] ESTABLISHING_HANDSHAKE_WITH_NODE_DELTA_4' },
-        { type: 'info', text: '[OK] UPLOADING_CORE_ARTIFACT: master_resume.pdf' },
-        { type: 'info', text: '[OK] PARSING_TARGET_REQUISITION: job_description.txt' },
-        { type: 'secondary', text: '[...] STARTING_NEURAL_EXTRACTION_ENGINE' },
-        { type: 'primary', text: '[!] DETECTED_KEYWORD_GAP: kubernetes, terraform, aws_lambda' },
-        { type: 'secondary', text: '[...] OPTIMIZING_EXPERIENCE_NARRATIVE_LAYER' },
-        { type: 'info', text: '[OK] INJECTING_SEMANTIC_KEYWORDS' },
-        { type: 'primary', text: '[!] QUANTIFYING_TECHNICAL_IMPACT_METRICS' },
-        { type: 'info', text: '[OK] GENERATING_OPTIMIZED_PDF_PROTOCOL' },
-        { type: 'secondary', text: '[OK] TAILORING_COMPLETE_REDIRECTING_TO_MAINFRAME' },
-    ];
-
     useEffect(() => {
+        const logMessages = [
+            { type: 'info', text: '[OK] ESTABLISHING_HANDSHAKE_WITH_NODE_DELTA_4' },
+            { type: 'info', text: '[OK] UPLOADING_CORE_ARTIFACT: master_resume.pdf' },
+            { type: 'info', text: '[OK] PARSING_TARGET_REQUISITION: job_description.txt' },
+            { type: 'secondary', text: '[...] STARTING_NEURAL_EXTRACTION_ENGINE' },
+            { type: 'primary', text: '[!] DETECTED_KEYWORD_GAP: kubernetes, terraform, aws_lambda' },
+            { type: 'secondary', text: '[...] OPTIMIZING_EXPERIENCE_NARRATIVE_LAYER' },
+            { type: 'info', text: '[OK] INJECTING_SEMANTIC_KEYWORDS' },
+            { type: 'primary', text: '[!] QUANTIFYING_TECHNICAL_IMPACT_METRICS' },
+            { type: 'info', text: '[OK] GENERATING_OPTIMIZED_PDF_PROTOCOL' },
+            { type: 'secondary', text: '[OK] TAILORING_COMPLETE_REDIRECTING_TO_MAINFRAME' },
+        ];
+
         // Mock progress and logs sequence
         let logIndex = 0;
         const interval = setInterval(() => {
