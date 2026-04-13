@@ -1,0 +1,302 @@
+# Instincts generated from https://github.com/keenpaul29/resume-tailor-n8n
+# Generated: 2026-04-13T06:09:34.204Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: resume-tailor-n8n-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Commit Length
+
+## Action
+
+Keep commit messages concise (~41 characters)
+
+## Evidence
+
+- Average commit message length: 41 chars
+- Based on 3 commits
+
+---
+id: resume-tailor-n8n-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: resume-tailor-n8n-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: resume-tailor-n8n-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: resume-tailor-n8n-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: resume-tailor-n8n-workflow-update-docker-compose-for-backend-networking-or-security
+trigger: "when doing update docker compose for backend networking or security"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Workflow Update Docker Compose For Backend Networking Or Security
+
+## Action
+
+Follow the update-docker-compose-for-backend-networking-or-security workflow:
+1. Edit deployment/docker-compose.yml to adjust service ports, network interfaces, or proxy settings.
+2. Optionally, coordinate with frontend or proxy configuration if related to security or exposure.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: deployment/docker-compose.yml
+
+---
+id: resume-tailor-n8n-instinct-file-naming-camelCase
+trigger: "When creating or renaming a file in the codebase"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Instinct File Naming CamelCase
+
+## Action
+
+Name the file using camelCase convention
+
+## Evidence
+
+- Pattern in namingConventions.files: camelCase
+
+---
+id: resume-tailor-n8n-instinct-function-naming-camelCase
+trigger: "When defining a new function"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Instinct Function Naming CamelCase
+
+## Action
+
+Name the function using camelCase convention
+
+## Evidence
+
+- Pattern in namingConventions.functions: camelCase
+
+---
+id: resume-tailor-n8n-instinct-class-naming-pascalCase
+trigger: "When defining a new class"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Instinct Class Naming PascalCase
+
+## Action
+
+Name the class using PascalCase convention
+
+## Evidence
+
+- Pattern in namingConventions.classes: PascalCase
+
+---
+id: resume-tailor-n8n-instinct-constant-naming-screamingSnakeCase
+trigger: "When defining a constant"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Instinct Constant Naming ScreamingSnakeCase
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE convention
+
+## Evidence
+
+- Pattern in namingConventions.constants: SCREAMING_SNAKE_CASE
+
+---
+id: resume-tailor-n8n-instinct-import-style-relative
+trigger: "When importing modules in JavaScript files"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Instinct Import Style Relative
+
+## Action
+
+Use relative import paths
+
+## Evidence
+
+- Pattern in importStyle: relative
+
+---
+id: resume-tailor-n8n-instinct-export-style-named
+trigger: "When exporting modules or functions"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Instinct Export Style Named
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in exportStyle: named
+
+---
+id: resume-tailor-n8n-instinct-test-location-separate
+trigger: "When adding new tests"
+confidence: 0.7
+domain: testing
+source: repo-analysis
+source_repo: keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Instinct Test Location Separate
+
+## Action
+
+Place test files in a separate directory from source files
+
+## Evidence
+
+- Pattern in architecture.testLocation: separate
+
+---
+id: resume-tailor-n8n-instinct-commit-format-freeform
+trigger: "When writing a commit message"
+confidence: 0.8
+domain: git
+source: repo-analysis
+source_repo: keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Instinct Commit Format Freeform
+
+## Action
+
+Write a concise, freeform message summarizing the change (no strict prefix required)
+
+## Evidence
+
+- Pattern in commits.type: freeform
+- Examples: 'Fix frontend security and performance issues', 'Expose n8n backend on all interfaces'
+
+---
+id: resume-tailor-n8n-instinct-docker-compose-networking-update
+trigger: "When someone wants to change how backend services are exposed or secured via Docker Compose"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: keenpaul29/resume-tailor-n8n
+---
+
+# Resume Tailor N8n Instinct Docker Compose Networking Update
+
+## Action
+
+Edit deployment/docker-compose.yml to adjust service ports, network interfaces, or proxy settings; optionally coordinate with frontend or proxy configuration if related to security or exposure
+
+## Evidence
+
+- Workflow: update-docker-compose-for-backend-networking-or-security
+- Example commits: 'Edit deployment/docker-compose.yml to adjust service ports, network interfaces, or proxy settings.'
+
