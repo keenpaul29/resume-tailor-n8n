@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
+const NEURAL_BARS = [...Array(24)].map((_, i) => (Math.sin(i) + 1) * 40 + 10);
+
 const NeuralTerminal = () => {
   const [logs, setLogs] = useState([
     { id: 1, text: "INITIATING_NEURAL_HANDSHAKE...", type: "system" },
@@ -66,18 +68,14 @@ const NeuralTerminal = () => {
         {/* Neural Visualizer */}
         <div className="mt-8 h-24 relative overflow-hidden bg-surface-container-low">
           <div className="absolute inset-0 flex items-end justify-around px-4">
-            {[...Array(24)].map((_, i) => {
-              // Extract logic out to be deterministic based on index or stable across renders
-              const targetHeight = (Math.sin(i) + 1) * 40 + 10;
-              return (
-                <motion.div
-                  key={i}
-                  animate={{ height: [20, targetHeight, 20] }}
-                  transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.05 }}
-                  className="w-1 bg-primary/20"
-                />
-              );
-            })}
+            {NEURAL_BARS.map((targetHeight, i) => (
+              <motion.div
+                key={i}
+                animate={{ height: [20, targetHeight, 20] }}
+                transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.05 }}
+                className="w-1 bg-primary/20"
+              />
+            ))}
           </div>
         </div>
       </div>
