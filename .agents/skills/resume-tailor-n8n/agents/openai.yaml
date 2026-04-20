@@ -1,0 +1,6 @@
+interface:
+  display_name: "Resume Tailor N8n"
+  short_description: "Repo-specific patterns and workflows for resume-tailor-n8n"
+  default_prompt: "Use the resume-tailor-n8n repo skill to follow existing architecture, testing, and workflow conventions."
+policy:
+  allow_implicit_invocation: true
